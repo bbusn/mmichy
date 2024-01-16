@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html lang="<?php language_attributes(); ?>">
+<html lang="fr-FR">
 <head>
+<?php 
+    $theme_preference = isset($_COOKIE['mmichy_theme']) ? $_COOKIE['mmichy_theme'] : 'dark';
+    $body_classes = $theme_preference === 'dark' ? 'dark' : 'light'; ?>
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php wp_head() ?>
+    <?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?>>
+<body <?php body_class($body_classes); ?>>
+
 <header class="flex-between-center no-select">
     <a class="header-logo no-select" href="<?php echo home_url(); ?>">
         <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg" alt="logo" height="70" width="70">
@@ -19,7 +23,7 @@
             )
         ) ?>
         <label class="theme-switch no-select">
-            <input type="checkbox">
+            <input type="checkbox" <?php echo $theme_preference == 'light' ? 'checked' : ''; ?>>
             <span class="theme-switch-slider"></span>
             <span class="theme-switch-background"></span>
             <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/moon.svg" alt="dark-theme-icon" class="theme-switch-dark-icon">

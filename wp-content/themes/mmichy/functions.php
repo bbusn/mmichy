@@ -29,5 +29,8 @@ add_action('after_setup_theme', 'mmichy_setup');
 add_action('wp_enqueue_scripts', 'mmichy_register_styles');
 add_action('wp_enqueue_scripts', 'mmichy_register_scripts');
 
-
-?>
+function p($args){
+    echo '<pre>';
+    var_dump($args);
+    echo '</pre>';
+}
