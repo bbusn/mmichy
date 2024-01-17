@@ -10,7 +10,7 @@
                 $layout_file = sprintf('%s/layouts/%s.php', get_template_directory(), $layout_name);
 
             ?>
-        <div class="program pos-2 <?php echo $isOpen ?>" data-draggable=<?php echo $isDraggable ?>>
+        <div class="program <?php echo transform_to_classname($window['name']) ?> pos-2 <?php echo $isOpen ?>" data-draggable=<?php echo $isDraggable ?>>
             <div class="program-container">
                 <div class="window flex-start-center flex-column <?php echo $window['size'] ?>">
                     <div class="window-nav flex-between-center">

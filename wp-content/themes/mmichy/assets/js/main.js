@@ -67,7 +67,7 @@ const hover = document.querySelector('header .hover');
 const navLinks = document.querySelectorAll('header ul li a');
 let currentWidth = window.innerWidth;
 
-if (currentWidth > 900) {
+if (currentWidth > 990) {
     navLinks.forEach((item) => {
         item.addEventListener('mouseenter', () => {
             hover.style.opacity = '0.9';
@@ -96,10 +96,10 @@ document.querySelectorAll(".program").forEach(program => {
     const maximize = program.querySelector('.maximize');
     const minimize = program.querySelector('.minimize');
 
-    file.addEventListener('click', () => { if (!isMobile()) {activateWindow(program); toggleWindow(program);}});
-    close.addEventListener('click', () => { if (!isMobile()) {deactivateWindow(program); toggleWindow(program);} });
+    file.addEventListener('click', () => { activateWindow(program); toggleWindow(program);});
+    close.addEventListener('click', () => { deactivateWindow(program); toggleWindow(program); });
     maximize.addEventListener('click', () => { if (!isMobile()) {activateWindow(program); maximizeWindow(program);} });
-    minimize.addEventListener('click', () => { if (!isMobile()) {deactivateWindow(program); minimizeWindow(program);} });
+    minimize.addEventListener('click', () => { deactivateWindow(program); minimizeWindow(program); });
 
     program.addEventListener('mousedown', () => {
         if (!isMobile()) {
@@ -165,7 +165,7 @@ function minimizeWindow(program) {
 
 document.addEventListener('mousedown', event => {
     const activeProgram = document.querySelector(".program.active");
-    if (!activeProgram || !event.target.closest(".program")) {
+    if (activeProgram && !activeProgram.contains(event.target)) {
         deactivateWindow(activeProgram);
     }
 });

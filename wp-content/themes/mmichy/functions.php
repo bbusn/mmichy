@@ -34,3 +34,9 @@ function p($args){
     var_dump($args);
     echo '</pre>';
 }
+function transform_to_classname($word) {
+    $word = iconv('UTF-8', 'ASCII//TRANSLIT', $word);
+    $word = preg_replace('/[^a-zA-Z0-9]/', '', $word);
+    $word = strtolower($word);
+    return $word;
+}

@@ -207,9 +207,11 @@ body {
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    box-sizing: border-box;
     height: 100vh;
-    width: 100%;
+    width: 100vw;
 }
 body.dark {
     transition: all 0.5s;
@@ -226,8 +228,8 @@ body.dark {
     left: 50%;
     transform: translate(-50%, -50%);
     object-fit: cover;
-    width: 100%;
-    height: 100%;
+    width: 100dvw;
+    height: 100dvh;
 }
 .flex-center-center {
     display: flex;
@@ -417,9 +419,12 @@ body.dark nav ul a {
     will-change: transform;
     width: 30px;
     border-radius: 2px;
-    height: 5px;
+    height: 5.5px;
     background: var(--black);
     transition: all 0.3s;
+}
+#menu-button span:first-of-type {
+    width: 30px;
 }
 body.dark #menu-button span {
     background: var(--white);
@@ -535,39 +540,37 @@ body.dark .window.dark {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1) ;
     transition: all 0.4s;
-}
-/*________SIZES________*/
-.window.tiny {
-    width: 20vw;
-    height: 22.5vh;
+}.window.tiny {
+    width: 25.5vw;
+    height: 25vh;
 }
 .window.small {
-    width: 22.5vw;
-    height: 30vh;
+    width: 25.5vw;
+    height: 35vh;
 }
 .window.small-2 {
-    width: 20vw;
-    height: 30vh;
+    width: 25vw;
+    height: 35vh;
 }
 .window.medium {
-    width: 22.5vw;
-    height: 60vh;
+    width: 25.5vw;
+    height: 65vh;
 }
 .window.medium-2 {
-    width: 20vw;
-    height: 60vh;
+    width: 25vw;
+    height: 65vh;
 }
 .window.long {
-    width: 67.5vw;
-    height: 40vh;
+    width: 65.5vw;
+    height: 45vh;
 }
 .window.large {
-    width: 55vw;
-    height: 60vh;
+    width: 60vw;
+    height: 65vh;
 }
 .window.huge {
-    width: 45vw;
-    height: 70vh;
+    width: 50vw;
+    height: 65vh;
 }
 .window-nav {
     box-sizing: border-box;
@@ -754,9 +757,7 @@ body.dark .window.dark .window-content {
         display: none;
     }
     .program.pos-1, .program.pos-2, .program.pos-3 {
-        -webkit-tap-highlight-color: transparent;
-        outline: none;
-        border: none;
+        width: 80%;
         z-index: 2;
         display: flex;
         justify-content: center;
@@ -845,7 +846,7 @@ body.dark .window.dark .window-content {
 }
 
 /* ORIENTATION LANDSCAPE */
-@media screen and (max-width:900px) and (min-width:0px) and (orientation:landscape) {
+@media screen and (max-width:990px) and (min-width:0px) and (orientation:landscape) {
     header nav ul.flex-center-center {
         width: 50%;
         height: 50vh;
@@ -857,7 +858,7 @@ body.dark .window.dark .window-content {
     /*________SIZES________*/
     .window.tiny {
         width: min(300px, 22.5vw);
-        height: min(150px, 50vh);
+        height: min(150px, 20vh);
     }
     .window.small {
         width: min(300px, 22.5vw);
@@ -872,12 +873,12 @@ body.dark .window.dark .window-content {
         height: min(400px, 60vh);
     }
     .window.medium-2 {
-        width: 250px;
-        height: 400px;
+        width: min(250px, 20vw);
+        height: min(400px, 60vh);
     }
     .window.long {
-        width: 900px;
-        height: 300px;
+        width: min(900px, 67.5vw);
+        height: min(300px, 45vh);
     }
     .window.large {
         width: min(700px, 55vw);
