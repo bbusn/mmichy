@@ -435,6 +435,9 @@ body.dark #menu-button span {
     z-index: 2;
     transition: all 0.3s;
 }
+.program.open {
+    z-index: 3;
+}
 .program:focus {
     outline: none;
 }
@@ -495,15 +498,15 @@ body.dark .file {
     color: var(--white);
 }
 .program.pos-1 {
-    top: 48.5%;
-    left: 34.5%;
+    top: 50%;
+    left: 50%;
 }
 .program.pos-2 {
-    top: 49.5%;
-    left: 60%;
+    top: 50%;
+    left: 50%;
 }
 .program.pos-3 {
-    top: 48.5%;
+    top: 5.5%;
     left: 80%;
 }
 .file:hover {
@@ -540,38 +543,8 @@ body.dark .window.dark {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1) ;
     transition: all 0.4s;
-}.window.tiny {
-    width: 25.5vw;
-    height: 25vh;
 }
-.window.small {
-    width: 25.5vw;
-    height: 35vh;
-}
-.window.small-2 {
-    width: 25vw;
-    height: 35vh;
-}
-.window.medium {
-    width: 25.5vw;
-    height: 65vh;
-}
-.window.medium-2 {
-    width: 25vw;
-    height: 65vh;
-}
-.window.long {
-    width: 65.5vw;
-    height: 45vh;
-}
-.window.large {
-    width: 60vw;
-    height: 65vh;
-}
-.window.huge {
-    width: 50vw;
-    height: 65vh;
-}
+
 .window-nav {
     box-sizing: border-box;
     padding: 0px 20px;
@@ -597,7 +570,6 @@ body.dark .window-nav {
 }
 .window-content pre {
     text-align: center;
-    word-break: break-all;
     word-wrap: break-word;
     white-space: pre-wrap;
     height: 100%;
@@ -693,9 +665,35 @@ body.dark .window.dark .window-content {
     border-radius: 4px;
     background: var(--tertiary-color);
 }
-
-
-
+/*________SIZES________*/
+.window.tiny {
+    width: 300px;
+    height: 150px;
+}
+.window.very-small {
+    width: 300px;
+    height: 200px;
+}
+.window.small {
+    width: 325px;
+    height: 400px;
+}
+.window.medium {
+    width: 450px;
+    height: 400px;
+}
+.window.big {
+    width: 650px;
+    height: 400px;
+}
+.window.very-big {
+    width: 650px;
+    height: 450px;
+}
+.window.huge {
+    width: 750px;
+    height: 550px;
+}
 
 /*_________ RESPONSIVE _________*/
 @media screen and (max-width:990px) and (min-width:0px) {
@@ -756,26 +754,30 @@ body.dark .window.dark .window-content {
     header .hover {
         display: none;
     }
-    .program.pos-1, .program.pos-2, .program.pos-3 {
-        width: 80%;
+    body .program {
+        width: 100vw;
         z-index: 2;
+        position: unset;
         display: flex;
         justify-content: center;
         align-items: center;
-        position: static;
-        transform: scale(1);
+    }
+    body .program.open {
+        margin: 0px;
     }
     .program .program-container {
+        width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
-        position: static;
+        position: unset;
     }
-    .program.open .window.flex-start-center {
+    .program .window.flex-start-center {
+        opacity: 1;
         transform: scale(1);
-        position: static;
-        width: 90vw;
-        height: 50vh;
+        position: unset;
+        width: 90%;
+        height: auto;
     }
     .program.open:focus {
         outline: none;
@@ -785,9 +787,6 @@ body.dark .window.dark .window-content {
     }
     body.dark .program.open.active .window.flex-start-center {
         box-shadow: 0px 0px 5px 0px rgba(255, 255, 255, 0.3);
-    }
-    .file {
-        position: static;
     }
     footer {
         z-index: 1;
@@ -844,49 +843,12 @@ body.dark .window.dark .window-content {
         visibility: hidden;
     }
 }
-
 /* ORIENTATION LANDSCAPE */
 @media screen and (max-width:990px) and (min-width:0px) and (orientation:landscape) {
     header nav ul.flex-center-center {
         width: 50%;
         height: 50vh;
         gap: 10px;
-    }
-}
-/*_________ RESPONSIVE _________*/
-@media screen and (min-width:1440px) {
-    /*________SIZES________*/
-    .window.tiny {
-        width: min(300px, 22.5vw);
-        height: min(150px, 20vh);
-    }
-    .window.small {
-        width: min(300px, 22.5vw);
-        height: min(200px, 30vh);
-    }
-    .window.small-2 {
-        width: min(250px, 20vw);
-        height: min(200px, 30vh);
-    }
-    .window.medium {
-        width: min(300px, 22.5vw);
-        height: min(400px, 60vh);
-    }
-    .window.medium-2 {
-        width: min(250px, 20vw);
-        height: min(400px, 60vh);
-    }
-    .window.long {
-        width: min(900px, 67.5vw);
-        height: min(300px, 45vh);
-    }
-    .window.large {
-        width: min(700px, 55vw);
-        height: min(400px, 60vh);
-    }
-    .window.huge {
-        width: min(600px, 45vw);
-        height: min(700px, 60vh);
     }
 }
 footer {

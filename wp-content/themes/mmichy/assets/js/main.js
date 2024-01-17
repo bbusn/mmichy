@@ -96,10 +96,10 @@ document.querySelectorAll(".program").forEach(program => {
     const maximize = program.querySelector('.maximize');
     const minimize = program.querySelector('.minimize');
 
-    file.addEventListener('click', () => { activateWindow(program); toggleWindow(program);});
-    close.addEventListener('click', () => { deactivateWindow(program); toggleWindow(program); });
+    file.addEventListener('click', () => { if (!isMobile()) {activateWindow(program); toggleWindow(program);}});
+    close.addEventListener('click', () => { if (!isMobile()) {deactivateWindow(program); toggleWindow(program);} });
     maximize.addEventListener('click', () => { if (!isMobile()) {activateWindow(program); maximizeWindow(program);} });
-    minimize.addEventListener('click', () => { deactivateWindow(program); minimizeWindow(program); });
+    minimize.addEventListener('click', () => { if (!isMobile()) {deactivateWindow(program); minimizeWindow(program);} });
 
     program.addEventListener('mousedown', () => {
         if (!isMobile()) {
@@ -133,16 +133,16 @@ function toggleWindow(program) {
         const fileRect = file.getBoundingClientRect();
 
         if (fileRect.left > window.innerWidth - fileRect.width) {
-            program.style.left = `${window.innerWidth - 50}px`;
+            program.style.left = `${window.innerWidth - 100}px`;
         }
         if (fileRect.left < 0 - fileRect.width) {
-            program.style.left = `50px`;
+            program.style.left = `100px`;
         }
         if (fileRect.top > window.innerHeight - fileRect.height) {
-            program.style.top = `${window.innerHeight - 50}px`;
+            program.style.top = `${window.innerHeight - 100}px`;
         }
         if (fileRect.top < 0 - fileRect.height) {
-            program.style.top = `50px`;
+            program.style.top = `100px`;
         }
     }
 }
@@ -204,16 +204,16 @@ document.querySelectorAll(".program").forEach(program => {
         let fileRect = file.getBoundingClientRect();
 
         if (fileRect.left > window.innerWidth - fileRect.width) {
-            program.style.left = `${window.innerWidth - 50}px`;
+            program.style.left = `${window.innerWidth - 100}px`;
         }
         if (fileRect.left < 0 - fileRect.width) {
-            program.style.left = `50px`;
+            program.style.left = `100px`;
         }
         if (fileRect.top > window.innerHeight - fileRect.height) {
-            program.style.top = `${window.innerHeight - 50}px`;
+            program.style.top = `${window.innerHeight - 100}px`;
         }
         if (fileRect.top < 0 - fileRect.height) {
-            program.style.top = `50px`;
+            program.style.top = `100px`;
         }
     }
 
@@ -246,6 +246,7 @@ document.querySelectorAll(".program").forEach(program => {
 window.addEventListener('resize', () => {
     windowResize();
 });
+windowResize();
 function windowResize() {
     if (isMobile()) {
         document.querySelectorAll(".program").forEach(program => {
@@ -254,7 +255,7 @@ function windowResize() {
             zIndexCounter = 3;
         });
     } else {
-        document.querySelectorAll(".program").forEach(program => {
+        document.querySelectorAll(".program.open").forEach(program => {
             program.dataset.draggable = "1";
         });
     }

@@ -1,1 +1,2 @@
-<?php echo $layout[0]['text'];
+<?php 
+    echo '<pre>'. $layout[0]['text'] . '</pre>';
