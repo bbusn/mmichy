@@ -248,11 +248,14 @@ window.addEventListener('resize', () => {
 });
 windowResize();
 function windowResize() {
+    document.querySelectorAll('.window-content').forEach(content => {
+        let shadow = content.querySelector('.window-content-shadow');
+        shadow.style.height = content.scrollHeight + 'px';
+    });
+    
     if (isMobile()) {
         document.querySelectorAll(".program").forEach(program => {
             program.dataset.draggable = "0";
-            program.style.zIndex = "2";
-            zIndexCounter = 3;
         });
     } else {
         document.querySelectorAll(".program.open").forEach(program => {
