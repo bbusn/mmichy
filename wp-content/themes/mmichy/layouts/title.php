@@ -1,1 +1,1 @@
-<?php echo '<h1>' . $layout['title'] . '</h1>';
+<h1><?= $layout['title']; ?></h1>

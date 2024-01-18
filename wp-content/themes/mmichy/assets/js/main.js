@@ -97,9 +97,9 @@ document.querySelectorAll(".program").forEach(program => {
     const minimize = program.querySelector('.minimize');
 
     file.addEventListener('click', () => { if (!isMobile()) {activateWindow(program); toggleWindow(program);}});
-    close.addEventListener('click', () => { if (!isMobile()) {deactivateWindow(program); toggleWindow(program);} });
-    maximize.addEventListener('click', () => { if (!isMobile()) {activateWindow(program); maximizeWindow(program);} });
-    minimize.addEventListener('click', () => { if (!isMobile()) {deactivateWindow(program); minimizeWindow(program);} });
+    close.addEventListener('click', () => { if (!isMobile()) {deactivateWindow(program); toggleWindow(program);}});
+    maximize.addEventListener('click', () => { if (!isMobile()) {activateWindow(program); maximizeWindow(program);};});
+    minimize.addEventListener('click', () => { if (!isMobile()) {deactivateWindow(program); minimizeWindow(program);}});
 
     program.addEventListener('mousedown', () => {
         if (!isMobile()) {
@@ -145,12 +145,14 @@ function toggleWindow(program) {
             program.style.top = `100px`;
         }
     }
+    windowResize();
 }
 
 function maximizeWindow(program) {
-    program.dataset.draggable = (program.dataset.draggable === "1") ? "0" : "1";
+    program.dataset.draggable = 0;
     program.style.zIndex = zIndexCounter++;
     program.classList.toggle('maximized');
+    windowResize();
 }
 
 function minimizeWindow(program) {
@@ -161,6 +163,7 @@ function minimizeWindow(program) {
     } else {
         toggleWindow(program);
     }
+    windowResize();
 }
 
 document.addEventListener('mousedown', event => {
@@ -246,19 +249,13 @@ document.querySelectorAll(".program").forEach(program => {
 window.addEventListener('resize', () => {
     windowResize();
 });
-windowResize();
 function windowResize() {
-    document.querySelectorAll('.window-content').forEach(content => {
-        let shadow = content.querySelector('.window-content-shadow');
-        shadow.style.height = content.scrollHeight + 'px';
-    });
-    
     if (isMobile()) {
         document.querySelectorAll(".program").forEach(program => {
             program.dataset.draggable = "0";
         });
     } else {
-        document.querySelectorAll(".program.open").forEach(program => {
+        document.querySelectorAll(".program.open:not(.maximized)").forEach(program => {
             program.dataset.draggable = "1";
         });
     }
@@ -266,3 +263,10 @@ function windowResize() {
 function isMobile() {
     return window.innerWidth < 990;
 }
+document.querySelectorAll('.open-file').forEach(button => {
+    button.addEventListener('click', () => {
+        const program = document.querySelector('#' + button.dataset.program);
+        activateWindow(program);
+        toggleWindow(program);
+    })
+})

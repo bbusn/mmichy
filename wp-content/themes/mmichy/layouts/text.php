@@ -1,1 +1,1 @@
-<?= $layout['text'];
+<p><?= $layout['text']; ?></p>

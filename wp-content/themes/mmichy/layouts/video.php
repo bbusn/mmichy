@@ -1,1 +1,1 @@
-<?php echo $layout['iframe'];
+<?= $layout['iframe'];

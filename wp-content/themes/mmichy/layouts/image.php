@@ -1,3 +1,2 @@
-<?php 
-    $image_alt = $layout['image']['url'] !== '' ? $layout['image']['alt'] : 'image';
-    echo '<img class="window-content-layout-image" src="'. $layout['image']['url'] . '" alt="' . $image_alt . '">';
+<?php $image_alt = $layout['image']['url'] !== '' ? $layout['image']['alt'] : 'image'; ?>
+<img class="window-content-layout-image" src="<?= $layout['image']['url']; ?>" alt="<?= $image_alt; ?>">
