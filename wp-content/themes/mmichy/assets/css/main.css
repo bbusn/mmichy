@@ -175,6 +175,7 @@ body.dark .window.dark .window-content::-webkit-scrollbar-thumb:active {
     --secondary-font: 'DePixelKlein', sans-serif;
     --ft-size-title: 50px;
     --ft-size-subtitle: 35px;
+    --ft-size-small-title: 25px;
     --ft-size-text: 20px;
     --ft-size-small-text: 15px;
     --ft-size-tiny-text: 12px;
@@ -590,6 +591,9 @@ body.dark .window-nav {
     width: 100%;
     height: auto;
 }
+.window-content-layout iframe {
+    margin-top: -10px;
+}
 .window-content-layout h1 {
     text-align: center;
     width: 95%;
@@ -597,6 +601,14 @@ body.dark .window-nav {
     font-weight: 800;
     font-family: var(--secondary-font);
     color: var(--secondary-color);
+}
+.window-content-layout h2 {
+    font-size: var(--ft-size-subtitle);
+    font-weight: 800;
+}
+.window-content-layout h3 {
+    font-size: var(--ft-size-small-title);
+    font-weight: 600;
 }
 .window-content-layout a:not(.clickable-icon, .primary-link, .secondary-link) {
     cursor: pointer;
